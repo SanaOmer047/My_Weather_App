@@ -44,8 +44,8 @@ function currentDate(date) {
    icons.innerHTML=`${iconsrc}`;
    cityElement.innerHTML = response.data.city;
     temperatureElement.innerHTML =` ${temperature} °C`; 
-   temperaturedetails.innerHTML= `${describe}  <br/> Humidity: ${humidity}%,<br/> feels like: ${feels}°C
-   <br/> wind speed:${windSpeed}Km/h `
+   temperaturedetails.innerHTML= `${describe}  <br/> Humidity: ${humidity}%,<br/> Feels like: ${feels}°C
+   <br/> Wind speed:${windSpeed}Km/h `
   };
   
   function search(event) {
