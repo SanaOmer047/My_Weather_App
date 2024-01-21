@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <title>weather_app</title>
 </head>
 <body background="Src/new image/Weather_re_qsmd.png">
-    <div class="current_temperature">9 °C</div>
-       <div class="Sun">Sunny</div>
+    
+  <div class="current_temperature" id="current_temperature">9 °C</div>
+       <div class="current-city" id="current-city">Kabul</div>
     <div class="main_body">
-    <form class="form">
+    <form class="form" id="search-form">
         <input type="search"
         placeholder="Enter a city.."
         class="search"
+        id="searchInput"
         />
         <input type="submit" value="search" class="submit" />
      </form>
        
        <p class= "main">
-        <span id="current time">1:28 AM</span> <br/>
-        <span ></span>, moderate rain <br />
-        Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
-      </p></div>
+        <span id="current-time"></span> <br/>
+        <span ></span><div class="" id="details">
+      </p></div></div>
      
       <footer >
         <p>
@@ -32,4 +34,5 @@
           <a href="https://superb-kitten-be19b6.netlify.app" target="_blank">hosted on Netlify</a>
         </p>
       </footer>
+      <script src="Src/java.js"></script>
 </html>
