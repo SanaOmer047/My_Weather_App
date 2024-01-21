@@ -33,17 +33,20 @@ function currentDate(date) {
     let temperatureElement = document.querySelector("#current_temperature"); 
     let temperature = Math.round(response.data.temperature.current);
     let cityElement = document.querySelector("#current-city"); 
-    cityElement.innerHTML = response.data.city;
-    temperatureElement.innerHTML =` ${temperature} °C`; 
-    console.log(response.data);
     let temperaturedetails = document.querySelector("#details");
-    let feels = response.data.temperature.feels_like ;
-    let humidity =response.data.temperature.humidity;
-    let describe = response.data.condition.
-    description;
-
-   temperaturedetails.innerHTML= `${describe} Humidity${humidity}, feels like ${feels}`
-  }
+    let feels = Math.round(response.data.temperature.feels_like) ;
+    let humidity =Math.round(response.data.temperature.humidity);
+    let describe = response.data.condition.description;
+    let windSpeed = Math.round(response.data.wind.speed);
+    let icons = document.querySelector("#icon");
+    let iconurlsrc = response.data.condition.icon_url;
+   let iconsrc =`<img src="${iconurlsrc}"/>`
+   icons.innerHTML=`${iconsrc}`;
+   cityElement.innerHTML = response.data.city;
+    temperatureElement.innerHTML =` ${temperature} °C`; 
+   temperaturedetails.innerHTML= `${describe}  <br/> Humidity: ${humidity}%,<br/> feels like: ${feels}°C
+   <br/> wind speed:${windSpeed}Km/h `
+  };
   
   function search(event) {
     event.preventDefault();
