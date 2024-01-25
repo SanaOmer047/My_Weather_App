@@ -46,19 +46,53 @@ function currentDate(date) {
     temperatureElement.innerHTML =` ${temperature} °C`; 
    temperaturedetails.innerHTML= `${describe}  <br/> Humidity: ${humidity}%,<br/> Feels like: ${feels}°C
    <br/> Wind speed:${windSpeed}Km/h `
+   getforecastdata(response.data.city);
   };
-  
-  function search(event) {
-    event.preventDefault();
-    let searchInputElement = document.querySelector("#searchInput");
-    let city = searchInputElement.value;
-  
+    function searchcity (city){
     let apiKey = "aet38f3bo337f6e891d11f066a098c49";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  
-    axios.get(apiUrl).then(displayTemperature)
+    axios.get(apiUrl).then(displayTemperature);
     };
-  
-  let searchForm = document.querySelector("#search-form");
-  searchForm.addEventListener("submit", search);
-  
+    function search(event) {
+    event.preventDefault();
+     let searchElement = document.querySelector("#searchInput");
+      searchcity(searchElement.value);
+    };
+    function getforecastdata(city){
+      let apikey = "aet38f3bo337f6e891d11f066a098c49";
+      let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apikey}&units=metric`;
+      axios(apiUrl).then(veiwforecast);
+    };
+    function realday(timestamp){
+      let date = new Date (timestamp * 1000);
+      let days =["Mon","Tue", "Wed", "Thu", "Fri", "Sat","Sun"];
+      return days[date.getDay()];
+    }
+    function veiwforecast(response){
+     console.log(response.data);
+   
+   let forcasteHTML ="";
+   let forecast = document.querySelector("#forecast");
+   response.data.daily.forEach(function(day,index){
+    if (index < 6){
+   forcasteHTML +=
+    `<div class= "weatherForecast">
+    <span class = "weather-forcast-day-one">
+    ${realday(day.time)}
+    </span>
+  <span>
+    <img src="${day.condition.icon_url}
+      " alt="" width="50px">
+  </span> <br/>
+  <span class="min-temprature">${Math.round(day.temperature.maximum)}º</span><span class ="max-temprature"> ${Math.round(day.temperature.minimum)}º</span>
+</div>`}
+    });
+
+forecast.innerHTML=forcasteHTML;
+};
+
+   
+  let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", search);
+
+searchcity("kabul");

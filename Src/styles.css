@@ -11,8 +11,8 @@ footer{
 }
 body {background-repeat: no-repeat;
     background-size: 80%;
-   position: sticky;
-}
+    display: flex;
+  }
 .search{
 border-radius: 10px;
 padding: 8px 20px; 
@@ -67,4 +67,32 @@ box-shadow: 2px 1px 1px rgb(0, 229, 255);
     position: absolute;
     top:50px;
     right:30px;
+}
+.weather-forecast{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom:0px;
+    position: absolute;
+    bottom: 100px;
+     margin-left: 10px;
+     margin-right: 10px;
+}
+
+.weather-forcast-day-one{
+    font-size: 20px;
+    font-family: cursive;
+  
+}
+.max-temprature {
+    text-shadow:1px 0px 0px rgb(0, 229, 255); 
+}
+.weatherForecast{
+    margin-left: 35px;
+}
+.weatherForecast:hover{
+background-color: rgb(233, 244, 246);
+padding: 10px;
+border-radius: 15px;
+cursor: pointer;
+box-shadow:1px 1px 0px rgb(0, 229, 255); 
 }
